@@ -1,12 +1,87 @@
+:root{
+  --bg:#0f1720;
+  --card:#0b1220;
+  --muted:#9aa4b2;
+  --accent:#2563eb;
+  --accent-2:#06b6d4;
+  --surface:#0f1724;
+  --radius:12px;
+  --max-width:1100px;
+  --container-padding:20px;
+  --text:#e6eef8;
+}
 
-body { margin:0; background:#0f1117; color:white; font-family:Arial, sans-serif;}
-.navbar{position:fixed; top:0; width:100%; padding:20px 60px; display:flex; justify-content:space-between; background:rgba(15,17,23,0.7); backdrop-filter:blur(12px);}
-.logo{height:40px;}
-nav a{color:white; margin-left:20px; text-decoration:none; opacity:0.8;}
-nav a:hover{opacity:1;}
-.hero{padding:200px 10% 120px; text-align:center;}
-.hero h1{font-size:48px;}
-.hero span{color:#2D6AFF;}
-.sub{margin-top:20px; font-size:20px; opacity:0.8;}
-.preview-section{text-align:center; padding:100px 10%;}
-.dashboard{width:90%; max-width:1100px; border-radius:16px;}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background:linear-gradient(180deg,#071025 0%, #071523 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.45;
+}
+
+.container{
+  max-width:var(--max-width);
+  padding:var(--container-padding);
+  margin:0 auto;
+}
+
+/* Header */
+.site-header{
+  position:sticky;top:0;background:transparent;padding:14px 0;
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;}
+.brand{font-weight:700;color:var(--text);text-decoration:none;font-size:1.05rem}
+.nav a{color:var(--muted);text-decoration:none;margin-left:16px}
+.nav .cta{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:var(--text)}
+
+/* Hero */
+.hero{padding:48px 0}
+.hero-grid{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center}
+.lead{color:var(--muted);font-size:1.05rem;margin-top:8px}
+.hero-ctas{margin-top:18px}
+.btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;color:var(--text);border:0;background:rgba(255,255,255,0.04)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 6px 18px rgba(38,99,235,0.2)}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+.trust{list-style:none;padding:0;margin-top:14px;color:var(--muted);display:flex;gap:12px}
+
+/* hero card */
+.hero-card{background:rgba(255,255,255,0.02);border-radius:14px;padding:18px}
+.card-inner h3{margin:0 0 8px 0}
+.muted{color:var(--muted)}
+
+/* features */
+.features{padding:36px 0}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+.feature{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px}
+
+/* pricing */
+.pricing{padding:36px 0}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.price-card{background:rgba(255,255,255,0.02);padding:20px;border-radius:12px;text-align:center}
+.price-card.recommended{transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,6,23,0.6)}
+.price{font-size:1.6rem;margin:6px 0 14px 0}
+
+/* contact */
+.contact{padding:36px 0}
+.form{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.form input,.form select,.form textarea{width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--text)}
+.form-actions{display:flex;align-items:center;gap:12px;margin-top:8px}
+
+/* footer */
+.site-footer{padding:20px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+
+/* responsive */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr 1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .nav a{display:none}
+  .header-inner{justify-content:space-between}
+}
