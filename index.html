@@ -2,12 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
+    <!-- EmailJS Library -->
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-  (function(){
-    emailjs.init(UutjWT0F4ILR0L2Sr);
-  })();
-</script>
+    <script>
+      (function(){
+        emailjs.init("UutjWT0F4ILR0L2Sr"); 
+      })();
+    </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TextFlow — AI-powered conversation automation for real estate</title>
@@ -16,26 +18,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-    <script>
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-        name: document.getElementById("name").value,
-        agencyName: document.getElementById("agencyName").value,
-        phone: document.getElementById("phone").value,
-        email: document.getElementById("email").value,
-        crm: document.getElementById("crm").value,
-    })
-    .then(function() {
-        alert("Your details have been sent! We'll contact you shortly.");
-        document.getElementById('contactForm').reset();
-    }, function(error) {
-        console.error("FAILED...", error);
-        alert("There was an error. Please try again.");
-    });
-});
-</script>
 
 <body>
     <!-- Navigation -->
@@ -84,7 +66,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
                     <a href="#" class="btn btn-primary btn-large startAutomatingBtn">Start Automating Your Follow-up <span class="btn-arrow">→</span></a>
                     <a href="#how-it-works" class="btn btn-secondary btn-large">See How It Works</a>
                 </div>
-                
+
                 <!-- Trust Points -->
                 <div class="trust-points">
                     <div class="trust-item">
@@ -450,38 +432,70 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
             <div class="modal-content">
                 <h2 class="modal-title">Get Started with TextFlow</h2>
                 <p class="modal-subtitle">Fill out the form below and we'll get in touch with you.</p>
+
+                <!-- FIXED FORM -->
                 <form class="modal-form" id="contactForm">
-                
-<input type="hidden" name="_subject" value="New Lead from TextFlow Website">
-<input type="hidden" name="_template" value="table">
 
                     <div class="form-group">
                         <label for="name">Name *</label>
                         <input type="text" id="name" name="name" required>
                     </div>
+
                     <div class="form-group">
                         <label for="agencyName">Agency Name *</label>
                         <input type="text" id="agencyName" name="agencyName" required>
                     </div>
+
                     <div class="form-group">
                         <label for="phone">Phone Number *</label>
                         <input type="tel" id="phone" name="phone" required>
                     </div>
+
                     <div class="form-group">
                         <label for="email">Email *</label>
                         <input type="email" id="email" name="email" required>
                     </div>
+
                     <div class="form-group">
-                        <label for="crm">CRM (Walt / VaultRE / Rex / Agentbox / MRI) *</label>
+                        <label for="crm">CRM *</label>
                         <input type="text" id="crm" name="crm" placeholder="Enter your CRM" required>
                     </div>
+
                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
+
                 </form>
+
             </div>
         </div>
     </div>
 
     <script src="/script.js"></script>
+
+    <!-- FINAL EmailJS SEND SCRIPT -->
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById('contactForm');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            emailjs.send("service_zlbqg9n", "template_cp2tbnf", {
+                name: document.getElementById("name").value,
+                agencyName: document.getElementById("agencyName").value,
+                phone: document.getElementById("phone").value,
+                email: document.getElementById("email").value,
+                crm: document.getElementById("crm").value,
+            })
+            .then(function() {
+                alert("Your details have been sent! We'll contact you shortly.");
+                form.reset();
+            }, function(error) {
+                console.error("FAILED...", error);
+                alert("There was an error sending your message.");
+            });
+        });
+    });
+    </script>
+
 </body>
 </html>
-
