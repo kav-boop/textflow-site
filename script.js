@@ -358,43 +358,6 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('TextFlow website loaded successfully! 🚀');
 });
 
-// Add cursor effect for premium feel (optional)
-let cursor = null;
-if (window.innerWidth > 768) {
-    cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    cursor.style.cssText = `
-        width: 20px;
-        height: 20px;
-        border: 2px solid #6366F1;
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        transition: transform 0.1s ease;
-        display: none;
-    `;
-    document.body.appendChild(cursor);
-    
-    document.addEventListener('mousemove', (e) => {
-        if (cursor) {
-            cursor.style.display = 'block';
-            cursor.style.left = e.clientX - 10 + 'px';
-            cursor.style.top = e.clientY - 10 + 'px';
-        }
-    });
-    
-    // Scale cursor on hover over interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .feature-card, .pricing-card');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            if (cursor) cursor.style.transform = 'scale(1.5)';
-        });
-        el.addEventListener('mouseleave', () => {
-            if (cursor) cursor.style.transform = 'scale(1)';
-        });
-    });
-}
 
 // Modal functionality - run immediately and also on DOMContentLoaded
 (function initModal() {
