@@ -313,24 +313,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('loaded');
     
     // Animate hero elements sequentially (but ensure buttons are always visible)
-    // Note: Hero title, subtitle, and description now use CSS blur animations
     const heroBadge = document.querySelector('.hero-badge');
     if (heroBadge) {
         heroBadge.style.opacity = '0';
         heroBadge.style.transform = 'translateY(30px)';
     }
     
-    // Ensure hero-cta buttons are always visible
     const heroCta = document.querySelector('.hero-cta');
     if (heroCta) {
         heroCta.style.opacity = '1';
         heroCta.style.visibility = 'visible';
     }
     
-    // Hero title, subtitle, and description use CSS blur animations (defined in CSS)
-    // No need to manually animate them here as CSS handles it
-    
-    // Add smooth scroll behavior enhancement
+    // Smooth scroll behavior enhancement
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -344,7 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(href);
             
             if (target) {
-                // Use 60px offset on mobile, 90px on desktop
                 const navHeight = window.innerWidth <= 768 ? 60 : 90;
                 const offsetTop = target.offsetTop - navHeight;
                 window.scrollTo({
@@ -357,7 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     console.log('TextFlow website loaded successfully! 🚀');
 });
-
 
 // Modal functionality - run immediately and also on DOMContentLoaded
 (function initModal() {
@@ -381,18 +374,15 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Close modal function
     function closeModal() {
         modalOverlay.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // Open modal - use capture phase to ensure it runs first
     console.log('Found', startAutomatingBtns.length, 'buttons to attach modal to');
     if (startAutomatingBtns.length > 0) {
         startAutomatingBtns.forEach((btn, index) => {
             console.log(`Attaching click handler to button ${index + 1}:`, btn);
-            // Use capture phase and higher priority
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
@@ -402,45 +392,38 @@ document.addEventListener('DOMContentLoaded', () => {
                     modalOverlay.classList.add('active');
                     document.body.style.overflow = 'hidden';
                     console.log('Modal should be visible now. Classes:', modalOverlay.className);
-                    // Force a reflow to ensure CSS applies
                     void modalOverlay.offsetHeight;
                 } else {
                     console.error('Modal overlay is null!');
                 }
-            }, true); // Use capture phase
+            }, true);
         });
     } else {
         console.warn('No buttons found with class .startAutomatingBtn or #getStartedNavBtn');
-        // Try alternative selectors
         const altButtons = document.querySelectorAll('a[href="#"]');
         console.log('Found', altButtons.length, 'buttons with href="#"');
     }
 
-    // Close modal handlers
     if (modalClose) {
         modalClose.addEventListener('click', closeModal);
     }
 
-    // Close on overlay click
     modalOverlay.addEventListener('click', (e) => {
         if (e.target === modalOverlay) {
             closeModal();
         }
     });
 
-    // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
             closeModal();
         }
     });
 
-    // Form submission
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Get form data
             const formData = {
                 name: document.getElementById('name').value,
                 agencyName: document.getElementById('agencyName').value,
@@ -449,17 +432,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 crm: document.getElementById('crm').value
             };
 
-            // Here you would typically send the data to your backend
-            // For now, we'll just log it and show a success message
             console.log('Form submitted:', formData);
-            
-            // Show success message (you can customize this)
             alert('Thank you! We\'ll be in touch soon.');
-            
-            // Reset form and close modal
             contactForm.reset();
             closeModal();
         });
     }
 })();
-
