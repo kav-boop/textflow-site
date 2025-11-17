@@ -1739,5 +1739,46 @@ body.loaded {
     z-index: -1;
 }
 
+/* ----------------------------------------------------------
+   PREMIUM MINIMAL DOT CURSOR + MAGNETIC HOVER
+   ---------------------------------------------------------- */
+
+/* Hide default cursor */
+body, button, a {
+    cursor: none !important;
+}
+
+/* Dot cursor */
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s ease, height 0.15s ease, 
+                background 0.15s ease, opacity 0.15s ease,
+                transform 0.08s ease;
+    opacity: 0.9;
+}
+
+/* Magnetic hover grow effect */
+.magnetic-hover:hover ~ .cursor-dot,
+.magnetic-hover:hover + .cursor-dot {
+    width: 18px !important;
+    height: 18px !important;
+    background: rgba(255,255,255,0.8);
+}
+
+/* Glow on interactive elements */
+.magnetic-hover:hover ~ .cursor-dot {
+    box-shadow: 0 0 12px rgba(255,255,255,0.6);
+}
+
+
 
 
