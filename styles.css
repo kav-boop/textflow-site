@@ -1697,3 +1697,15 @@ body.loaded {
 .btn-primary.magnetic {
     transition: transform 0.2s ease;
 }
+.typing-cursor-sub {
+    display: inline-block;
+    font-weight: 800;
+    margin-left: 3px;
+    color: var(--color-primary);
+    animation: subBlink 0.7s infinite;
+}
+
+@keyframes subBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
