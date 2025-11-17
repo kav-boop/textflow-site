@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  (function(){
+    emailjs.init(UutjWT0F4ILR0L2Sr);
+  })();
+</script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TextFlow — AI-powered conversation automation for real estate</title>
     <link rel="stylesheet" href="/styles.css">
@@ -9,6 +16,27 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
+    <script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+        name: document.getElementById("name").value,
+        agencyName: document.getElementById("agencyName").value,
+        phone: document.getElementById("phone").value,
+        email: document.getElementById("email").value,
+        crm: document.getElementById("crm").value,
+    })
+    .then(function() {
+        alert("Your details have been sent! We'll contact you shortly.");
+        document.getElementById('contactForm').reset();
+    }, function(error) {
+        console.error("FAILED...", error);
+        alert("There was an error. Please try again.");
+    });
+});
+</script>
+
 <body>
     <!-- Navigation -->
     <nav class="nav">
