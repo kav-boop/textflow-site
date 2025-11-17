@@ -435,6 +435,48 @@ document.addEventListener('DOMContentLoaded', () => {
             closeModal();
         }
     });
+    // Typing cycle for sub-headline
+const subLines = [
+    "Instant responses.",
+    "Zero missed leads.",
+    "More inspections.",
+    "More appraisals.",
+    "More signed agreements."
+];
+
+let subIndex = 0;
+let subCharIndex = 0;
+let subDeleting = false;
+
+const subSpeed = 70;
+const subDeleteSpeed = 40;
+const subDelayBetween = 1200;
+
+const subElement = document.getElementById("subTyping");
+
+function typeSub() {
+    const current = subLines[subIndex];
+
+    if (!subDeleting) {
+        subElement.textContent = current.substring(0, subCharIndex++);
+        if (subCharIndex > current.length) {
+            subDeleting = true;
+            setTimeout(typeSub, subDelayBetween);
+            return;
+        }
+    } else {
+        subElement.textContent = current.substring(0, subCharIndex--);
+        if (subCharIndex < 0) {
+            subDeleting = false;
+            subIndex = (subIndex + 1) % subLines.length;
+        }
+    }
+
+    setTimeout(typeSub, subDeleting ? subDeleteSpeed : subSpeed);
+}
+
+typeSub();
+
 
     // Form submission
     if (contactForm) {
@@ -463,3 +505,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 })();
+
