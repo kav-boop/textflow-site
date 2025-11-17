@@ -1725,3 +1725,31 @@ body.loaded {
     animation: blurIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
     will-change: filter, opacity, transform;
 }
+/* Fix hero heading centering on mobile */
+@media (max-width: 768px) {
+
+    .hero-content {
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .hero-title {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .hero-subheadline,
+    .hero-description,
+    .hero-cta,
+    .hero-badge {
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    .hero-badge {
+        justify-content: center !important;
+    }
+}
+
+
