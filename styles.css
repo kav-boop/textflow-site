@@ -1751,5 +1751,16 @@ body.loaded {
         justify-content: center !important;
     }
 }
+@media (max-width: 768px) {
+    .hero-heading {
+        font-size: 2.2rem !important; /* bigger */
+        line-height: 1.2 !important;
+        white-space: nowrap !important; /* forces single line */
+        text-align: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+}
+
 
 
