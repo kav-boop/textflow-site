@@ -454,5 +454,46 @@
     </div>
 
     <script src="/script.js"></script>
+    <script>
+// Fade-in page load
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
+
+// Magnetic hover
+document.querySelectorAll('.btn-primary').forEach(btn => {
+  btn.classList.add('magnetic');
+  
+  btn.addEventListener('mousemove', e => {
+    const r = btn.getBoundingClientRect();
+    const x = e.clientX - r.left - r.width / 2;
+    const y = e.clientY - r.top - r.height / 2;
+    btn.style.transform = `translate(${x * 0.04}px, ${y * 0.04}px)`;
+  });
+
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = "";
+  });
+});
+
+// Scroll to top button
+const scrollBtn = document.createElement('div');
+scrollBtn.className = 'scroll-top';
+scrollBtn.innerHTML = "↑";
+document.body.appendChild(scrollBtn);
+
+scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+        scrollBtn.classList.add("show");
+    } else {
+        scrollBtn.classList.remove("show");
+    }
+});
+</script>
+
 </body>
 </html>
