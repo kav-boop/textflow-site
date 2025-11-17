@@ -114,6 +114,11 @@ body {
 }
 
 @media (max-width: 768px) {
+    .hero-subheadline {
+    font-size: 1.3rem !important;
+    text-align: center !important;
+}
+
     .nav-links {
         display: flex;
         opacity: 0;
@@ -285,7 +290,7 @@ body {
     width: 100%;
 }
 
-/* Hero Section */
+/*  Section */
 .hero {
     position: relative;
     padding: calc(90px + var(--spacing-3xl)) 0 var(--spacing-3xl);
@@ -1708,4 +1713,15 @@ body.loaded {
 @keyframes subBlink {
     0%, 50% { opacity: 1; }
     51%, 100% { opacity: 0; }
+}
+.hero-subheadline {
+    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.4;
+    opacity: 0;
+    filter: blur(15px);
+    animation: blurIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.7s both;
+    will-change: filter, opacity, transform;
 }
