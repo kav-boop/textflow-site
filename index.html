@@ -280,34 +280,33 @@
 
     <!-- EmailJS FORM HANDLER -->
     <script>
-    document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById('contactForm');
 
-        // Init EmailJS
-        emailjs.init("UutjWT0F4ILR0L2Sr");
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-        const form = document.getElementById('contactForm');
+        const formData = {
+            name: document.getElementById("name").value.trim(),
+            agencyName: document.getElementById("agencyName").value.trim(),
+            phone: document.getElementById("phone").value.trim(),
+            email: document.getElementById("email").value.trim(),
+            crm: document.getElementById("crm").value.trim(),
+        };
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            emailjs.send("service_zlbqg9n", "template_cp2tbnf", {
-                name: document.getElementById("name").value,
-                agencyName: document.getElementById("agencyName").value,
-                phone: document.getElementById("phone").value,
-                email: document.getElementById("email").value,
-                crm: document.getElementById("crm").value,
-            })
-            .then(() => {
-                alert("Your details have been sent! We'll contact you shortly.");
-                form.reset();
-            })
-            .catch((error) => {
-                console.error("EmailJS FAILED:", error);
-                alert("Error sending message. Check console.");
-            });
+        emailjs.send("service_zlbqg9n", "template_cp2tbnf", formData)
+        .then(() => {
+            alert("Your details have been sent! We'll contact you shortly.");
+            form.reset();
+        })
+        .catch((error) => {
+            console.error("FAILED...", error);
+            alert("There was an error sending your message.");
         });
     });
-    </script>
+});
+</script>
+
 
 </body>
 </html>
