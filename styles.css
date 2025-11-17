@@ -1545,4 +1545,16 @@ html {
         font-size: 1.5rem;
     }
 }
+/* Force hero heading/subheading to center on mobile */
+@media (max-width: 768px) {
+    .hero-content,
+    .hero-title,
+    .hero-subtitle,
+    .hero-description {
+        text-align: center !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+
 
