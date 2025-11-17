@@ -1715,7 +1715,7 @@ body.loaded {
     51%, 100% { opacity: 0; }
 }
 .hero-subheadline {
-    font-size: clamp(1.4rem, 2.6vw, 2rem);
+    font-size: clamp(2.2rem, 2.6vw, 2rem);
     font-weight: 600;
     color: var(--color-text);
     margin-bottom: var(--spacing-md);
